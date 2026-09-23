@@ -28,6 +28,10 @@ const Logo = () => (
   </div>
 );
 const Navbar = ({
+  currentPage,
+  onNavigate,
+  onSearch,
+  searchValue,
   currentUser,
   userStatus,
   onMyProfile,
