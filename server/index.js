@@ -13,13 +13,15 @@ app.use(cookieParser());
 app.use(express.json()); 
 
 // CORS configuration
+const allowedOrigins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:5175",
+    process.env.FRONTEND_URL,
+].filter(Boolean);
+
 const corsOptions = {
-    origin: [
-        "http://localhost:3000", 
-        "http://localhost:5173", 
-        "http://localhost:5175",
-        "https://hr-management-system-odoo.vercel.app"
-    ],
+    origin: allowedOrigins,
     credentials: true,
     optionsSuccessStatus: 200
 };

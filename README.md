@@ -90,6 +90,39 @@ Dayflow is a full-featured HR Management System designed to streamline workforce
 ## 🏗️ Architecture
 
 ```
+
+## Deployment
+
+The project deploys as two services:
+
+1. Deploy `client` to Vercel.
+2. Deploy `server` to a Node.js host such as Render or Railway. The API needs a persistent MongoDB connection and cannot run as a static Vercel site.
+
+### Vercel client settings
+
+- **Root Directory:** `client`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Environment Variable:** `VITE_API_BASE_URL=https://YOUR-BACKEND-DOMAIN/api`
+
+The `client/vercel.json` file contains the SPA fallback needed by React Router.
+
+### Backend environment variables
+
+Configure these on the backend host:
+
+```env
+PORT=4000
+MONGODB_URL=your-mongodb-connection-string
+JWT_SECRET=your-long-random-secret
+FRONTEND_URL=https://your-project.vercel.app
+MAIL_HOST=smtp.gmail.com
+SMTP_PORT=587
+MAIL_USER=your-email
+MAIL_PASS=your-app-password
+```
+
+After deploying the backend, verify `https://YOUR-BACKEND-DOMAIN/api/health`, then set the resulting `/api` URL as `VITE_API_BASE_URL` in Vercel and redeploy the client.
 HR_Management_System_Odoo/
 ├── client/                    # React Frontend
 │   ├── src/

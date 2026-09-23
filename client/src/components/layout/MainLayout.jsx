@@ -12,7 +12,6 @@ const MainLayout = ({
   userStatus,
   onMyProfile,
   onLogout,
-  onSettings,
   isCheckedIn,
   isCheckedOut,
   checkInTime,
@@ -33,20 +32,19 @@ const MainLayout = ({
         userStatus={userStatus}
         onMyProfile={onMyProfile}
         onLogout={onLogout}
-        onSettings={onSettings}
       />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex gap-6">
+        <div className={`grid gap-6 ${showAttendancePanel ? 'lg:grid-cols-[minmax(0,1fr)_18rem]' : ''}`}>
           {/* Main Content Area */}
-          <main className={`flex-1 ${showAttendancePanel ? 'lg:mr-80' : ''}`}>
+          <main className="min-w-0">
             {children}
           </main>
 
-          {/* Attendance Side Panel - Fixed on Desktop */}
+          {/* Attendance Side Panel */}
           {showAttendancePanel && (
-            <aside className="hidden lg:block fixed right-8 top-24 w-72">
+            <aside className="hidden lg:block min-w-0 self-start sticky top-24">
               <AttendancePanel 
                 isCheckedIn={isCheckedIn}
                 isCheckedOut={isCheckedOut}

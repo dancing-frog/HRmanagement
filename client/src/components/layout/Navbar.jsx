@@ -23,26 +23,15 @@ const SettingsIcon = () => (
 );
 
 const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-soft">
-      <svg className="w-6 h-6 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    </div>
-    <span className="font-bold text-xl text-neutral-900">Dayflow</span>
+  <div className="flex items-center">
+    <span className="font-bold text-xl tracking-tight text-neutral-900">Dayflow</span>
   </div>
 );
-
-const Navbar = ({ 
-  currentPage, 
-  onNavigate, 
-  onSearch,
-  searchValue,
+const Navbar = ({
   currentUser,
   userStatus,
   onMyProfile,
-  onLogout,
-  onSettings
+  onLogout
 }) => {
   const navTabs = [
     { id: 'employees', label: 'Employees' },
@@ -88,14 +77,6 @@ const Navbar = ({
               onChange={onSearch}
               className="hidden sm:block w-64"
             />
-
-            {/* Settings Button */}
-            <button 
-              onClick={onSettings}
-              className="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
-            >
-              <SettingsIcon />
-            </button>
 
             {/* User Avatar with Status & Dropdown */}
             <Dropdown

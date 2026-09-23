@@ -219,11 +219,6 @@ const HRDashboard = () => {
     navigate('/signin');
   }, [logout, navigate]);
 
-  const handleSettings = useCallback(() => {
-    console.log('Opening settings...');
-    alert('Settings page coming soon!');
-  }, []);
-
   const handleNewEmployee = useCallback(() => {
     console.log('Creating new employee...');
     alert('New employee form coming soon!');
@@ -390,7 +385,6 @@ const HRDashboard = () => {
       userStatus={userStatus}
       onMyProfile={handleMyProfile}
       onLogout={handleLogout}
-      onSettings={handleSettings}
       isCheckedIn={isCheckedIn}
       isCheckedOut={isCheckedOut}
       checkInTime={checkInTime}
